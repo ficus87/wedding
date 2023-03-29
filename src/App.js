@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   AppBar,
   Box,
@@ -6,7 +6,6 @@ import {
   IconButton,
   SwipeableDrawer,
   Toolbar,
-  Typography,
   Collapse
 } from '@mui/material';
 import { ReactComponent as Logo } from './assets/images/logo.svg';
