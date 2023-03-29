@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-shadow */
 import moment from 'moment';
 import { useEffect, useState } from 'react';
