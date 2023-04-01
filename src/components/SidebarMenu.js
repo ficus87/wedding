@@ -33,6 +33,14 @@ const SidebarMenu = () => {
             <Divider sx={{ display: { xs: 'none', md: 'flex' } }} flexItem orientation="vertical" />
             <ListItemButton
                 sx={SELECTED_STYLE}
+                selected={location.pathname === "/where"}
+                component={Link}
+                to="/where">
+                I luoghi
+            </ListItemButton>
+            <Divider sx={{ display: { xs: 'none', md: 'flex' } }} flexItem orientation="vertical" />
+            <ListItemButton
+                sx={SELECTED_STYLE}
                 selected={location.pathname === "/invitation"}
                 component={Link}
                 to="/invitation">

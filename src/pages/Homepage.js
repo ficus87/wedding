@@ -22,23 +22,26 @@ const Homepage = () => {
           src={HeaderImage}
           alt="..."
         />
-        <Box
-          sx={{
-            alignSelf: "flex-end",
-            justifySelf: "center",
-            position: "absolute",
-            mb: 4,
-            borderRadius: 2,
-            background: "#22222244"
-          }}
-        >
-          <Typography
-            sx={{ textAlign: "center" }}
-            variant={isMobile ? "h4" : "h2"}
-          >FRANCESCA IANNAZZO & GIORDANO AMICI</Typography>
-        </Box>
+
       </Box>
       <Box sx={{ py: 2, backgroundColor: _ => _.palette.primary.main }} component="section">
+        <Container maxWidth="xl">
+          <Box
+            sx={{
+              alignSelf: "flex-end",
+              justifySelf: "center",
+              p: 1,
+              mx: 2,
+              borderRadius: 2,
+              background: "#22222244"
+            }}
+          >
+            <Typography
+              sx={{ textAlign: "center" }}
+              variant={isMobile ? "body2" : "h2"}
+            >FRANCESCA IANNAZZO & GIORDANO AMICI</Typography>
+          </Box>
+        </Container>
         <Container maxWidth="sm">
           <Box alt="..." width="100%" sx={{ my: 4 }} component="img" src={DecorationImage} />
           <Typography variant="h6" sx={{ mb: 4, textAlign: "center" }}>Ci sposiamo!</Typography>
