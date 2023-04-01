@@ -45,8 +45,8 @@ const AddGuestDialog = ({ open, setOpen }) => {
     return (
         <Dialog open={open} maxWidth="sm" fullWidth>
             <DialogTitle>
-                <Stack direction="row">
-                    <Typography variant="h4">Aggiungi invitato</Typography>
+                <Stack direction="row" justifyContent="space-between" alignItems="center">
+                    <Typography variant="h4" sx={{ flex: 1 }}>Aggiungi invitato</Typography>
                     <IconButton onClick={() => setOpen(false)}>
                         <Close />
                     </IconButton>

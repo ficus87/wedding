@@ -21,16 +21,19 @@ const GuestItem = ({ guest: { name, lastname, companions }, id }) => {
     return (
         <React.Fragment>
             <ListItem divider>
-                <ListItemText primary={`${name} ${lastname}`} 
+                <ListItemText 
+                    primary={`${name} ${lastname}`}
                     secondary={
-                        <List disablePadding>
-                            {companions?.map(({name, lastname}) => (
-                                <ListItem sx={{ pr: 0, py: 0 }}>
-                                    {name} {lastname}
-                                </ListItem>
-                            ))}
-                        </List>
-                    } 
+                        <span>
+                            <List disablePadding>
+                                {companions?.map(({ name, lastname }) => (
+                                    <ListItem sx={{ pr: 0, py: 0 }}>
+                                        {name} {lastname}
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </span>
+                    }
                 />
                 <ListItemSecondaryAction>
                     <Stack direction="row" spacing={2}>
