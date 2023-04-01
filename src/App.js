@@ -8,7 +8,8 @@ import {
   Toolbar,
   Collapse,
   useMediaQuery,
-  useTheme
+  useTheme,
+  Hidden
 } from '@mui/material';
 import { ReactComponent as Logo } from './assets/images/logo.svg';
 import { Menu } from '@mui/icons-material';
@@ -22,6 +23,7 @@ const App = () => {
   const [navbar, setNavbar] = useState(true);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  
   const onScroll = (e) => {
     const st = window.pageYOffset;
     if (st <= 0) {
@@ -85,7 +87,9 @@ const App = () => {
       <Box component="main">
         <Content />
       </Box>
-      <Footer />
+      { location.pathname !== "/admin" && 
+        <Footer />
+      }
     </React.Fragment>
   );
 }
