@@ -23,16 +23,15 @@ const GuestItem = ({ guest: { name, lastname, companions }, id }) => {
             <ListItem divider>
                 <ListItemText 
                     primary={`${name} ${lastname}`}
+                    secondaryTypographyProps={{ component: "div" }}
                     secondary={
-                        <span>
-                            <List disablePadding>
-                                {companions?.map(({ name, lastname }) => (
-                                    <ListItem sx={{ pr: 0, py: 0 }}>
-                                        {name} {lastname}
-                                    </ListItem>
-                                ))}
-                            </List>
-                        </span>
+                        <List disablePadding>
+                            {companions?.map(({ name, lastname }) => (
+                                <ListItem key={`${name}-${lastname}-companion`} sx={{ pr: 0, py: 0 }}>
+                                    {name} {lastname}
+                                </ListItem>
+                            ))}
+                        </List>
                     }
                 />
                 <ListItemSecondaryAction>
