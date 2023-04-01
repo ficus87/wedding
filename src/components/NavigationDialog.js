@@ -36,9 +36,6 @@ const NavigationDialog = ({ openDialog, setOpenDialog, lat, lng }) => {
                 </Tooltip>
             </Stack>
         </DialogTitle>
-        <DialogContent>
-            Apri con
-        </DialogContent>
         <DialogActions>
             <Button
                 sx={{
