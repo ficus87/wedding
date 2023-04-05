@@ -1,11 +1,11 @@
 import { Delete, GroupAdd } from '@mui/icons-material'
-import { IconButton, List, ListItem, ListItemSecondaryAction, ListItemText, Stack } from '@mui/material'
+import { Checkbox, IconButton, List, ListItem, ListItemSecondaryAction, ListItemText, Stack } from '@mui/material'
 import { deleteDoc, doc } from 'firebase/firestore'
 import React, { useState } from 'react'
 import { db } from '../../firebase'
 import AddGroupDialog from './AddGroupDialog'
 
-const GuestItem = ({ guest: { name, lastname, companions }, id }) => {
+const GuestItem = ({ guest: { name, lastname, companions, confirmed }, id }) => {
     const [openGroupAdd, setOpenGroupAdd] = useState(false);
 
     const handleDeleteGuest = async () => {
@@ -22,13 +22,15 @@ const GuestItem = ({ guest: { name, lastname, companions }, id }) => {
         <React.Fragment>
             <ListItem divider>
                 <ListItemText 
-                    primary={`${name} ${lastname}`}
+                    primary={<span>
+                        {name} {lastname}<Checkbox color="info" checked={confirmed} />
+                    </span>}
                     secondaryTypographyProps={{ component: "div" }}
                     secondary={
                         <List disablePadding>
-                            {companions?.map(({ name, lastname }) => (
+                            {companions?.map(({ name, lastname, confirmed }) => (
                                 <ListItem key={`${name}-${lastname}-companion`} sx={{ pr: 0, py: 0 }}>
-                                    {name} {lastname}
+                                    {name} {lastname} <Checkbox color="info" checked={confirmed} />
                                 </ListItem>
                             ))}
                         </List>

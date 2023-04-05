@@ -9,7 +9,6 @@ import {
   Collapse,
   useMediaQuery,
   useTheme,
-  Hidden
 } from '@mui/material';
 import { ReactComponent as Logo } from './assets/images/logo.svg';
 import { Menu } from '@mui/icons-material';

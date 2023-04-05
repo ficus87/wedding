@@ -7,7 +7,6 @@ import {
     IconButton,
     Stack,
     Typography,
-    Grid,
     TextField,
     Button,
     useMediaQuery,
@@ -20,7 +19,7 @@ import {
 import { Add, Close, Delete } from '@mui/icons-material';
 import { useForm } from '../../hooks'
 import { isRequired } from '../../hooks/useForm'
-import { addDoc, collection, doc, updateDoc } from 'firebase/firestore';
+import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 const AddGuestCompanionForm = ({ onAdd }) => {
@@ -71,6 +70,7 @@ const AddGroupDialog = ({ open, setOpen, idMainGuest, name, lastname, initCompan
         if(!open) {
             setCompanions(initCompanions);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [open]);
 
     const handleAddGuest = async () => {
