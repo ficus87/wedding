@@ -12,17 +12,9 @@ const ConfirmInvitationItem = ({ person, checked, setChecked }) => {
         <ListItem divider>
             <ListItemText primary={completeName} />
             <ListItemSecondaryAction>
-                {/* <Button
-                    color="primary"
-                    variant="contained"
-                    startIcon={checked ? <Check color="success" /> : <Close color="error" />}
-                    onClick={() => setChecked(_ => !_)}
-                >
-                    Conferma
-                </Button> */}
                 <Checkbox
                     color="info"
-                    checked={checked}
+                    checked={Boolean(checked)}
                     onChange={() => setChecked(_ => !_)}
                 />
             </ListItemSecondaryAction>
