@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Admin from './admin'
-import { ConfirmInvitation, ContactUs, Homepage, LeaveAMessage, NotFound, WeddingBlog, Where } from './pages'
+import { ConfirmInvitation, ContactUs, Homepage, LeaveAMessage, NotFound, Trip, WeddingBlog, Where } from './pages'
 
 const Content = () => {
     return (
@@ -13,6 +13,7 @@ const Content = () => {
             <Route path='/message' element={<LeaveAMessage />} />
             <Route path='/where' element={<Where />} />
             <Route path='/admin' element={<Admin />} />
+            <Route path='/trip' element={<Trip />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
     )

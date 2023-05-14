@@ -22,14 +22,14 @@ const SidebarMenu = () => {
                 to="/">
                 Benvenuti!
             </ListItemButton>
-            <Divider sx={{ display: { xs: 'none', md: 'flex' } }} flexItem orientation="vertical" />
+            {/* <Divider sx={{ display: { xs: 'none', md: 'flex' } }} flexItem orientation="vertical" />
             <ListItemButton
                 sx={SELECTED_STYLE}
                 selected={location.pathname === "/blog"}
                 component={Link}
                 to="/blog">
                 Blog di nozze
-            </ListItemButton>
+            </ListItemButton> */}
             <Divider sx={{ display: { xs: 'none', md: 'flex' } }} flexItem orientation="vertical" />
             <ListItemButton
                 sx={SELECTED_STYLE}
@@ -49,6 +49,14 @@ const SidebarMenu = () => {
             <Divider sx={{ display: { xs: 'none', md: 'flex' } }} flexItem orientation="vertical" />
             <ListItemButton
                 sx={SELECTED_STYLE}
+                selected={location.pathname === "/trip"}
+                component={Link}
+                to="/trip">
+                Lista di nozze
+            </ListItemButton>
+            <Divider sx={{ display: { xs: 'none', md: 'flex' } }} flexItem orientation="vertical" />
+            <ListItemButton
+                sx={SELECTED_STYLE}
                 selected={location.pathname === "/contact"}
                 component={Link}
                 to="/contact">
@@ -60,7 +68,7 @@ const SidebarMenu = () => {
                 selected={location.pathname === "/message"}
                 component={Link}
                 to="/message">
-                Libro delle visite
+                Lascia un messaggio
             </ListItemButton>
         </List>
     )

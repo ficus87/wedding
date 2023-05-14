@@ -30,7 +30,7 @@ const AddGuestCompanionForm = ({ onAdd }) => {
     const { values, changeHandler, errors, touched, isValid, reset } = useForm({ name: "", lastname: "" }, validations);
 
     return (
-        <Stack component="form" direction="row" spacing={1} alignItems="center" width="100%">
+        <Stack mt={1} component="form" direction="row" spacing={1} alignItems="center" width="100%">
             <TextField
                 variant="outlined"
                 label="Nome"
@@ -45,6 +45,7 @@ const AddGuestCompanionForm = ({ onAdd }) => {
             <TextField
                 variant="outlined"
                 sx={{ flex: 1 }}
+                color="info"
                 label="Cognome"
                 value={values.lastname}
                 onChange={({ target }) => changeHandler("lastname", target.value)}
@@ -99,7 +100,7 @@ const AddGroupDialog = ({ open, setOpen, idMainGuest, name, lastname, initCompan
             <DialogContent>
                 <List>
                     {companions.map(({ name, lastname }, index) => (
-                        <ListItem key={`${name}-${lastname}`}>
+                        <ListItem divider key={`${name}-${lastname}`}>
                             <ListItemText primary={`${name} ${lastname}`} />
                             <ListItemSecondaryAction>
                                 <IconButton onClick={() => setCompanions(_ => {

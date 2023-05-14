@@ -23,7 +23,10 @@ const ConfirmInvitation = () => {
           <Box alt="..." width="100%" sx={{ my: 4 }} component="img" src={DecorationImage} />
           <Typography variant="h3" sx={{ mb: 4, textAlign: "center" }}>Ci accompagni o te lo perdi?</Typography>
           <Typography variant="body1" sx={{ mb: 4, textAlign: "center" }}>
-            Per confermare la vostra presenza alle nozze vi basterà scrivere il vostro nome e cliccare su Cerca. Una volta trovati, dovrete solo indicarci se verrete o no al matrimonio (se volete, potete lasciare un messaggio. È opzionale, ma ci farebbe tanto piacere leggerlo!). :)
+            Per confermare la tua presenza alle nozze ti basterà scrivere il tuo nome e cognome, poi cliccare sul tasto Cerca. <br/>
+            La ricerca restituirà non solo il tuo nominativo ma anche quelli delle persone a te collegate, così ti facilitiamo il lavoro 😉<br/>
+            Segna le presenze e premi il tasto Conferma.<br/>
+            Se ti va, puoi scriverci nella sezione “Lascia un messaggio”, è opzionale ma ci farebbe tanto piacere 🤗 
           </Typography>
           <Divider />
           <Grid component="form" sx={{ mt: 4 }} container spacing={2}>
@@ -75,7 +78,6 @@ const ConfirmInvitation = () => {
       <ConfirmInvitationDialog 
         lastname={values.lastname} 
         name={values.name} 
-        onConfirm={() => console.log("onConfirm")} 
         open={openConfirm} 
         setOpen={setOpenConfirm} 
       />

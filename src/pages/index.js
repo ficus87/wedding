@@ -5,3 +5,4 @@ export { default as ConfirmInvitation } from './ConfirmInvitation';
 export { default as ContactUs } from './ContactUs';
 export { default as LeaveAMessage } from './LeaveAMessage';
 export { default as Where } from './Where';
+export { default as Trip } from './Trip';

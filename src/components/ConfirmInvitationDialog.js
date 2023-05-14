@@ -24,8 +24,8 @@ const ConfirmInvitationDialog = ({ open, setOpen, name, lastname }) => {
 
     const comparator = useCallback(
         c =>
-            c.name.toLowerCase().startsWith(name.toLowerCase()) &&
-            c.lastname.toLowerCase().startsWith(lastname.toLowerCase()),
+            c.name.toLowerCase().trim().startsWith(name.toLowerCase().trim()) &&
+            c.lastname.toLowerCase().trim().startsWith(lastname.toLowerCase().trim()),
         [name, lastname]);
 
     useEffect(() => {
@@ -62,7 +62,7 @@ const ConfirmInvitationDialog = ({ open, setOpen, name, lastname }) => {
     };
     
     return (
-        <Dialog open={open} maxWidth="sm" fullWidth fullScreen={isMobile}>
+        <Dialog onClose={() => setOpen(false)} open={open} maxWidth="sm" fullWidth fullScreen={isMobile}>
             <DialogTitle>
                 <Stack direction="row" justifyContent="space-between" alignItems="center">
                     <Typography variant="h4" sx={{ flex: 1 }}>Conferma presenze</Typography>
@@ -73,6 +73,13 @@ const ConfirmInvitationDialog = ({ open, setOpen, name, lastname }) => {
             </DialogTitle>
             <DialogContent>
                 <List>
+                    {persons.length <= 0 && (
+                        <Typography sx={{ textAlign: "center" }}>
+                            Nessun risultato trovato per {name} {lastname}.
+                            <br/>
+                            Oppure non sei stato invitato 😜 
+                        </Typography>
+                    )}
                     {persons.map((person, idx) => (
                         <React.Fragment key={`invitation-${person.name}-${person.lastname}`}>
                             <ConfirmInvitationItem
@@ -102,14 +109,16 @@ const ConfirmInvitationDialog = ({ open, setOpen, name, lastname }) => {
             </DialogContent>
             <DialogActions>
                 <Stack direction="row" spacing={2} justifyContent="flex-end">
-                    <Button
-                        variant="contained"
-                        color="success"
-                        startIcon={<Send />}
-                        onClick={onConfirm}
-                    >
-                        Conferma
-                    </Button>
+                    { persons.length > 0 && 
+                        <Button
+                            variant="contained"
+                            color="success"
+                            startIcon={<Send />}
+                            onClick={onConfirm}
+                        >
+                            Conferma
+                        </Button>
+                    }
                     <Button
                         variant="contained"
                         color="warning"
