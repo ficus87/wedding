@@ -8,7 +8,14 @@ const Footer = () => {
 
     const [image, setImage] = useState('');
     const [opacity, setOpacity] = useState(0);
-    const randomImage = () => imagesName[Math.floor(Math.random() * imagesName.length)];
+    const randomImage = (currentImage = "") => {
+        const newImage = imagesName[Math.floor(Math.random() * imagesName.length)]
+        if(currentImage === newImage) {
+            return randomImage(currentImage);
+        } else {
+            return newImage;
+        }
+    };
     useEffect(() => {
         let isMount = true;
         const _image = randomImage();
@@ -17,7 +24,7 @@ const Footer = () => {
         const interval = setInterval(() => {
             setOpacity(0);
             setTimeout(() => {
-                const _image = randomImage();
+                const _image = randomImage(image);
                 if (isMount) {
                     setImage(_image);
                     // setOpacity(1);
@@ -42,25 +49,31 @@ const Footer = () => {
                 <Stack spacing={1}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sx={{
+                            height: "450px",
+                            pt:0,
                             display: "inline-block",
                             textAlign: "center",
                             width: "auto",
                             mt: { xs: 0, sm: 2 }
                         }}>
-                            {image &&
-                                // <Box width="100%" maxHeight="440px" maxWidth="830px" component="img" alt="..." src={require(`../assets/images/footer.jpg`)} />
-                                <Box
-                                    width="auto"
-                                    height="450px"
-                                    component="img"
-                                    sx={{
-                                        transition: "opacity 0.4s ease-in",
-                                        opacity
-                                    }}
-                                    alt="..."
-                                    src={require(`../assets/images/moreImages/${image}`)}
-                                />
-                            }
+                            <Box width="100%" height="100%" display="flex" justifyContent="center" alignItems="center">
+                                {image &&
+                                    // <Box width="100%" maxHeight="440px" maxWidth="830px" component="img" alt="..." src={require(`../assets/images/footer.jpg`)} />
+                                    <Box
+                                        width="auto"
+                                        height="auto"
+                                        maxHeight="434px"
+                                        maxWidth="100%"
+                                        component="img"
+                                        sx={{
+                                            transition: "opacity 0.4s ease-in",
+                                            opacity,
+                                        }}
+                                        alt="..."
+                                        src={require(`../assets/images/moreImages/${image}`)}
+                                    />
+                                }
+                            </Box>
                         </Grid>
                     </Grid>
                     <Typography sx={{ pl: 2 }} variant="h4">
