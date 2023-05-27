@@ -37,7 +37,7 @@ const ConfirmInvitationDialog = ({ open, setOpen, name, lastname }) => {
                     const __ = _.data()
                     let found = comparator(__);
                     if (!found) {
-                        found = Boolean(__.companions.find(comparator));
+                        found = Boolean(__?.companions?.find(comparator));
                     }
                     return found;
                 }).map(_ => ({ ..._.data(), id: _.id })))

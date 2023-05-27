@@ -35,6 +35,7 @@ const Footer = () => {
             isMount = false;
             clearInterval(interval);
         };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     useEffect(() => {
         if (image) {

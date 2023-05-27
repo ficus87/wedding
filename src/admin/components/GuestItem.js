@@ -7,7 +7,7 @@ import AddGroupDialog from './AddGroupDialog'
 
 const GuestItem = ({ guest: { name, lastname, companions, confirmed }, id }) => {
     const [openGroupAdd, setOpenGroupAdd] = useState(false);
-
+    
     const handleDeleteGuest = async () => {
         try {
             await deleteDoc(doc(db, "guests", id));

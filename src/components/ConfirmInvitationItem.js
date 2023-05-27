@@ -1,6 +1,5 @@
 import React from 'react';
 import { Checkbox, ListItem, ListItemSecondaryAction, ListItemText } from '@mui/material';
-// import { Check, Close } from '@mui/icons-material';
 
 const ConfirmInvitationItem = ({ person, checked, setChecked }) => {
     const { name, lastname, prefix } = person;
