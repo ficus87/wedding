@@ -51,7 +51,10 @@ const ConfirmInvitationDialog = ({ open, setOpen, name, lastname }) => {
         try {
             persons.forEach(async person => {
                 const { id, ...data } = person;
-                await updateDoc(doc(db, "guests", id), data);
+                await updateDoc(
+                    doc(db, "guests", id), 
+                    { ...data, confirmDate: new Date() }
+                );
             });
             alert("Grazie per aver confermato la tua presenza! :)")
             setOpen(false);
@@ -60,7 +63,7 @@ const ConfirmInvitationDialog = ({ open, setOpen, name, lastname }) => {
             alert(`Errore: ${String(e)}`);
         }
     };
-    
+    console.log(persons)
     return (
         <Dialog onClose={() => setOpen(false)} open={open} maxWidth="sm" fullWidth fullScreen={isMobile}>
             <DialogTitle>
@@ -73,14 +76,14 @@ const ConfirmInvitationDialog = ({ open, setOpen, name, lastname }) => {
             </DialogTitle>
             <DialogContent>
                 <List>
-                    {persons.length <= 0 && (
+                    {(!persons || persons.length <= 0) && (
                         <Typography sx={{ textAlign: "center" }}>
                             Nessun risultato trovato per {name} {lastname}.
                             <br/>
                             Oppure non sei stato invitato 😜 
                         </Typography>
                     )}
-                    {persons.map((person, idx) => (
+                    {persons?.map((person, idx) => (
                         <React.Fragment key={`invitation-${person.name}-${person.lastname}`}>
                             <ConfirmInvitationItem
                                 person={person}
@@ -91,7 +94,7 @@ const ConfirmInvitationDialog = ({ open, setOpen, name, lastname }) => {
                                     return _
                                 })} 
                             />
-                            {person.companions.map((companion, i) => (
+                            {(person.companions || []).map((companion, i) => (
                                 <ConfirmInvitationItem
                                     key={`companion-${companion.name}-${companion.lastname}`}
                                     person={companion}

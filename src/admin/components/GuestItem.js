@@ -1,13 +1,23 @@
 import { Delete, GroupAdd } from '@mui/icons-material'
-import { Checkbox, IconButton, List, ListItem, ListItemSecondaryAction, ListItemText, Stack } from '@mui/material'
+import { Typography, Checkbox, IconButton, List, ListItem, ListItemSecondaryAction, ListItemText, Stack } from '@mui/material'
 import { deleteDoc, doc } from 'firebase/firestore'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { db } from '../../firebase'
-import AddGroupDialog from './AddGroupDialog'
+import AddGroupDialog from './AddGroupDialog';
+import moment from 'moment'
 
-const GuestItem = ({ guest: { name, lastname, companions, confirmed }, id }) => {
+const GuestItem = ({ guest: { name, lastname, companions, confirmed, confirmDate }, id }) => {
     const [openGroupAdd, setOpenGroupAdd] = useState(false);
+    const [confirmDatetime, setConfirmDatetime] = useState()
     
+    useEffect(() => {
+        if(confirmDate) {
+            setConfirmDatetime(
+                moment(confirmDate.toDate()).format("DD/MM/YYYY HH:mm")
+            );
+        }
+    }, [setConfirmDatetime, confirmDate]);
+
     const handleDeleteGuest = async () => {
         try {
             await deleteDoc(doc(db, "guests", id));
@@ -21,7 +31,7 @@ const GuestItem = ({ guest: { name, lastname, companions, confirmed }, id }) => 
     return (
         <React.Fragment>
             <ListItem divider>
-                <ListItemText 
+                <ListItemText
                     primary={<span>
                         {name} {lastname}<Checkbox color="info" checked={confirmed} />
                     </span>}
@@ -37,13 +47,18 @@ const GuestItem = ({ guest: { name, lastname, companions, confirmed }, id }) => 
                     }
                 />
                 <ListItemSecondaryAction>
-                    <Stack direction="row" spacing={2}>
-                        <IconButton onClick={() => setOpenGroupAdd(true)}>
-                            <GroupAdd />
-                        </IconButton>
-                        <IconButton onClick={handleDeleteGuest}>
-                            <Delete />
-                        </IconButton>
+                    <Stack>
+                        <Typography variant="body2">
+                            {confirmDatetime}
+                        </Typography>
+                        <Stack direction="row" spacing={2}>
+                            <IconButton onClick={() => setOpenGroupAdd(true)}>
+                                <GroupAdd />
+                            </IconButton>
+                            <IconButton onClick={handleDeleteGuest}>
+                                <Delete />
+                            </IconButton>
+                        </Stack>
                     </Stack>
                 </ListItemSecondaryAction>
             </ListItem>
