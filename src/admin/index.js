@@ -1,5 +1,5 @@
 import { Add } from '@mui/icons-material';
-import { Container, IconButton, List, Stack, Typography, TextField } from '@mui/material';
+import { Container, IconButton, List, Stack, Typography, TextField, Tooltip } from '@mui/material';
 import React, { useState } from 'react'
 import { AddGuestDialog, GuestItem } from './components';
 import { useGuests } from './hooks';
@@ -14,6 +14,7 @@ const Admin = () => {
             c.lastname.toLowerCase().trim().startsWith(search.toLowerCase().trim()),
         [search]);
     const [addGuest, setAddGuest] = useState(false);
+
     return (
         <React.Fragment>
             <Container maxWidth="sm" sx={{ mt: 4 }}>
@@ -29,9 +30,11 @@ const Admin = () => {
                             sx={{ display: { xs: "none", sm: "block" } }}
                             size="small"
                         />
-                        <IconButton onClick={() => setAddGuest(true)}>
-                            <Add />
-                        </IconButton>
+                        <Tooltip title="Aggiungi invitato">
+                            <IconButton onClick={() => setAddGuest(true)}>
+                                <Add />
+                            </IconButton>
+                        </Tooltip>
                     </Stack>
                     <Stack sx={{ display: { xs: "block", sm: "none" } }}>
                         <TextField
